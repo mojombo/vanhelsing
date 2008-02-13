@@ -1,3 +1,10 @@
+assets/darwin-10.5/dot-darwin.diff
+assets/darwin-10.5/etc-irbrc.diff
+assets/darwin-10.5/ignore-gsetcontext.diff
+assets/darwin-10.5/md5_sha1_commoncrypto.diff
+assets/darwin-10.5/use-dyld.diff
+assets/darwin-10.5/use-setreugid.diff
+assets/darwin-10.5/words-bigendian-from-arch.diff
 assets/gc.c.patch
 assets/parse.y.patch
 assets/ruby-1.8.6-p110.tar.bz2
@@ -6,7 +13,6 @@ ext/build_logger.rb
 ext/build_ruby.rb
 ext/extconf.rb
 ext/logger.c
-ext/logger.h
 lib/vanhelsing.rb
 LICENSE
 LICENSE_bleak_house

@@ -7,8 +7,8 @@ Echoe.new('vanhelsing') do |p|
 end
 
 task :go do
-  sh("sudo rm /usr/bin/ruby-vanhelsing")
-  sh("sudo rm -fr /tmp/vanhelsing")
+  sh("sudo rm /usr/bin/ruby-vanhelsing") rescue nil
+  sh("sudo rm -fr /tmp/vanhelsing") rescue nil
   sh("rake manifest")
   sh("rake clean")
   sh("rake package")

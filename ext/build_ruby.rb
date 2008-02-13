@@ -49,7 +49,14 @@ else
           # Patch, configure, and build
           system("patch -p0 < \'#{source_dir}/gc.c.patch\' > ../gc.c.patch.log 2>&1")
           system("patch -p0 < \'#{source_dir}/parse.y.patch\' > ../parse.y.patch.log 2>&1")
-          system("./configure --prefix=#{binary_dir[0..-5]} > ../configure.log 2>&1") # --with-static-linked-ext
+          system("patch -p0 < \'#{source_dir}/darwin-10.5/dot-darwin.diff\' > ../dot-darwin.diff.log 2>&1")
+          system("patch -p0 < \'#{source_dir}/darwin-10.5/etc-irbrc.diff\' > ../etc-irbrc.diff.log 2>&1")
+          system("patch -p0 < \'#{source_dir}/darwin-10.5/ignore-gsetcontext.diff\' > ../ignore-gsetcontext.diff.log 2>&1")
+          system("patch -p0 < \'#{source_dir}/darwin-10.5/md5_sha1_commoncrypto.diff\' ../md5_sha1_commoncrypto.diff.log 2>&1")
+          system("patch -p0 < \'#{source_dir}/darwin-10.5/use-dyld.diff\' > ../use-dyld.diff.log 2>&1")
+          system("patch -p0 < \'#{source_dir}/darwin-10.5/use-setreugid.diff\' > ../use-setreugid.diff.log 2>&1")
+          system("patch -p0 < \'#{source_dir}/darwin-10.5/words-bigendian-from-arch.diff\' > ../words-bigendian-from-arch.diff.log 2>&1")
+          system("./configure --enable-pthread --enable-shared --prefix=#{binary_dir[0..-5]} > ../configure.log 2>&1")
           
           # Patch the makefile for arch/sitedir
           makefile = File.read('Makefile')
