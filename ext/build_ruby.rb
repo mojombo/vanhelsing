@@ -1,5 +1,7 @@
 # Extension abuse in order to build our patched binary as part of the gem install process.
 
+puts "Building ruby"
+
 if RUBY_PLATFORM =~ /win32|windows/
   raise "Windows is not supported."
 end
@@ -8,7 +10,7 @@ unless RUBY_VERSION == '1.8.6'
   raise "Wrong Ruby version, you're at '#{RUBY_VERSION}', need 1.8.6"
 end
 
-source_dir = File.expand_path(File.dirname(__FILE__)) + "../assets"
+source_dir = File.expand_path(File.dirname(__FILE__)) + "/../assets"
 tmp = "/tmp/"
 
 require 'fileutils'
@@ -23,6 +25,7 @@ def which(basename)
 end
 
 unless which('ruby-vanhelsing')
+  puts "no ruby-vanhelsing"
   
   Dir.chdir(tmp) do
     build_dir = "vanhelsing"
