@@ -1,7 +1,5 @@
 # Extension abuse in order to build our patched binary as part of the gem install process.
 
-puts "Building ruby"
-
 if RUBY_PLATFORM =~ /win32|windows/
   raise "Windows is not supported."
 end
@@ -24,28 +22,30 @@ def which(basename)
   end
 end
 
-unless which('ruby-vanhelsing')
-  puts "no ruby-vanhelsing"
+if which('ruby-vanhelsing')
+  puts "Existing 'ruby-vanhelsing' binary. Nothing to do"
+else
+  puts "Building 'ruby-vanhelsing' binary."
   
   Dir.chdir(tmp) do
+    puts 'mark1.5'
     build_dir = "vanhelsing"
     binary_dir = File.dirname(`which ruby`)
     FileUtils.rm_rf(build_dir) rescue nil
     Dir.mkdir(build_dir)
-  
+    
     begin
       Dir.chdir(build_dir) do
-  
         # Copy Ruby source
         bz2 = "ruby-1.8.6-p110.tar.bz2"
         FileUtils.copy "#{source_dir}/#{bz2}", bz2
-  
+        
         # Extract
         system("tar xjf #{bz2} > tar.log 2>&1")
         File.delete bz2
-    
+        
         Dir.chdir("ruby-1.8.6-p110") do
-  
+          
           # Patch, configure, and build
           system("patch -p0 < \'#{source_dir}/gc.c.patch\' > ../gc.c.patch.log 2>&1")
           system("patch -p0 < \'#{source_dir}/parse.y.patch\' > ../parse.y.patch.log 2>&1")

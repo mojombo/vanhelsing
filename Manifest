@@ -2,8 +2,11 @@ assets/gc.c.patch
 assets/parse.y.patch
 assets/ruby-1.8.6-p110.tar.bz2
 CHANGELOG
+ext/build_logger.rb
 ext/build_ruby.rb
 ext/extconf.rb
+ext/logger.c
+ext/logger.h
 lib/vanhelsing.rb
 LICENSE
 LICENSE_bleak_house
