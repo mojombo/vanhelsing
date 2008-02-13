@@ -1,0 +1,11 @@
+assets/gc.c.patch
+assets/parse.y.patch
+assets/ruby-1.8.6-p110.tar.bz2
+bin/build_ruby.rb
+bin/extconf.rb
+CHANGELOG
+LICENSE
+LICENSE_bleak_house
+LICENSE_eric_hodel
+Manifest
+README
